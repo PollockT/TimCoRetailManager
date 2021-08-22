@@ -19,6 +19,8 @@ namespace TRMDataManager
                     {
                         // Adds document filter of type AuthTokenOperation that has the applied methods.
                         c.DocumentFilter<AuthTokenOperation>();
+                        // Adds for extra parameter for each token added
+                        c.OperationFilter<AuthorizationOperationFilter>();
 
                         // By default, the service root url is inferred from the request used to access the docs.
                         // However, there may be situations (e.g. proxy and load-balanced environments) where this does not

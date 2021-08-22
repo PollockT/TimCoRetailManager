@@ -40,7 +40,7 @@ namespace TRMDataManager.App_Start
                             @in = "formData",
                             @default = "tim@iamtimcorey.com"
                         },
-                        new ParameterClass1.cs
+                        new Parameter
                         {
                             type = "string",
                             name = "password",
