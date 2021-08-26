@@ -1,7 +1,8 @@
 ﻿CREATE TABLE [dbo].[SalesItem]
 (
-	[Id] INT NOT NULL default NEWID(),
+	[Id] INT NOT NULL IDENTITY,
 	[ItemName] NVARCHAR(50) NOT NULL,
-	[Description] NVARCHAR(MAX) NULL
+	[Description] NVARCHAR(MAX) NULL,
+
 	CONSTRAINT PK_SalesItemsId  PRIMARY KEY (Id) 
 )
