@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using TRMDekstopUI.Helpers;
 using TRMDekstopUI.ViewModels;
 
 namespace TRMDekstopUI
@@ -16,6 +18,10 @@ namespace TRMDekstopUI
         public Bootstrapper()
         {
             Initialize();
+
+            ConventionManager.AddElementConvention<PasswordBox>(PasswordBoxHelper.BoundPasswordProperty,
+                                                                "Password",
+                                                                "PasswordChanged");
         }
 
         protected override void Configure()
