@@ -29,17 +29,21 @@ namespace TRMDekstopUI.ViewModels
             { 
                 _password = value;
                 NotifyOfPropertyChange(() => Password);
+                NotifyOfPropertyChange(() => CanLogIn);
             }
         }
 
-        public bool CanLogIn(string userName, string password)
+        public bool CanLogIn
         {
-            bool output = false;
-            if(userName.Length > 0  && password.Length > 0)
+            get
             {
-                output = true;
+                bool output = false;
+                if (UserName?.Length > 0 && Password?.Length > 0)
+                {
+                    output = true;
+                }
+                return output;
             }
-            return output;
         }
 
         public void LogIn(string userName, string password)
