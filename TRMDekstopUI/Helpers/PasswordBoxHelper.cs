@@ -17,9 +17,9 @@ namespace TRMDekstopUI.Helpers
                 typeof(PasswordBoxHelper),
                 new FrameworkPropertyMetadata(string.Empty, OnBoundPasswordChanged));
 
-        public static string GetBoundPassword(DependencyObject d)
+        public static string GetBoundPassword(DependencyObject passwordObject)
         {
-            var box = d as PasswordBox;
+            var box = passwordObject as PasswordBox;
             if (box != null)
             {
                 // this funny little dance here ensures that we've hooked the
@@ -28,34 +28,34 @@ namespace TRMDekstopUI.Helpers
                 box.PasswordChanged += PasswordChanged;
             }
 
-            return (string)d.GetValue(BoundPasswordProperty);
+            return (string)passwordObject.GetValue(BoundPasswordProperty);
         }
 
-        public static void SetBoundPassword(DependencyObject d, string value)
+        public static void SetBoundPassword(DependencyObject passwordObject, string value)
         {
-            if (string.Equals(value, GetBoundPassword(d)))
+            if (string.Equals(value, GetBoundPassword(passwordObject)))
             {
                 return; // and this is how we prevent infinite recursion
             }
 
-            d.SetValue(BoundPasswordProperty, value);
+            passwordObject.SetValue(BoundPasswordProperty, value);
         }
 
         private static void OnBoundPasswordChanged(
-            DependencyObject d,
-            DependencyPropertyChangedEventArgs e)
+            DependencyObject passwordObject,
+            DependencyPropertyChangedEventArgs events)
         {
-            var box = d as PasswordBox;
+            var box = passwordObject as PasswordBox;
 
             if (box == null)
             {
                 return;
             }
 
-            box.Password = GetBoundPassword(d);
+            box.Password = GetBoundPassword(passwordObject);
         }
 
-        private static void PasswordChanged(object sender, RoutedEventArgs e)
+        private static void PasswordChanged(object sender, RoutedEventArgs events)
         {
             PasswordBox password = sender as PasswordBox;
 
