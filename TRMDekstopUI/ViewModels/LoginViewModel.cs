@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TRMDekstopUI.Helpers;
 
 namespace TRMDekstopUI.ViewModels
 {
@@ -11,6 +12,12 @@ namespace TRMDekstopUI.ViewModels
     {
         private string _userName;
         private string _password;
+        private IAPIHelper _apiHelper;
+
+        public LoginViewModel(IAPIHelper apiHelper)
+        {
+            _apiHelper = apiHelper;
+        }
 
         public string UserName
         {
@@ -46,9 +53,9 @@ namespace TRMDekstopUI.ViewModels
             }
         }
 
-        public void LogIn(string userName, string password)
+        public async Task LogIn()
         {
-            Console.WriteLine();
+            var result = await _apiHelper.Authenticate(UserName, Password);
         }
     }
 }
