@@ -26,6 +26,7 @@ namespace TRMDekstopUI.ViewModels
             { 
                 _userName = value;
                 NotifyOfPropertyChange(() => UserName);
+                NotifyOfPropertyChange(() => CanLogIn);
             }
         }
 
@@ -37,6 +38,33 @@ namespace TRMDekstopUI.ViewModels
                 _password = value;
                 NotifyOfPropertyChange(() => Password);
                 NotifyOfPropertyChange(() => CanLogIn);
+            }
+        }
+
+        
+        public bool IsErrorVisible
+        {
+            get
+            {
+                bool output = false;
+                if(ErrorMessage?.Length > 0)
+                {
+                    output = true;
+                }
+                return output; 
+            }            
+        }
+
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set 
+            {
+                _errorMessage = value;
+                NotifyOfPropertyChange(() => IsErrorVisible);
+                NotifyOfPropertyChange(() => ErrorMessage);
+                
             }
         }
 
@@ -57,11 +85,12 @@ namespace TRMDekstopUI.ViewModels
         {
             try
             {
+                ErrorMessage = "";
                 var result = await _apiHelper.Authenticate(UserName, Password);
             }
             catch(Exception exception)
             {
-                Console.WriteLine(exception.Message);
+                ErrorMessage = exception.Message;
             }
             
         }
