@@ -41,7 +41,7 @@ namespace TRMDekstopUI
                     viewModelType, viewModelType.ToString(), viewModelType));
         }
 
-        protected override void OnStartup(object sender, StartupEventArgs e)
+        protected override void OnStartup(object sender, StartupEventArgs events)  //change 1
         {
             DisplayRootViewFor<ShellViewModel>();
             
