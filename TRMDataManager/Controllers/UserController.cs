@@ -24,6 +24,7 @@ namespace TRMDataManager.Controllers
         /// </summary>
         /// <returns>user's GUID</returns>
         // GET: User/Details/5
+        [HttpGet]
         public UserModel GetById()
         {
             string userId = RequestContext.Principal.Identity.GetUserId();

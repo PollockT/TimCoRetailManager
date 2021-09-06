@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TRMDekstopUI.Helpers;
+using TRMDekstopUI.Library.Api;
 
 namespace TRMDekstopUI.ViewModels
 {
@@ -87,6 +88,9 @@ namespace TRMDekstopUI.ViewModels
             {
                 ErrorMessage = "";
                 var result = await _apiHelper.Authenticate(UserName, Password);
+
+                //capture more information about user
+                await _apiHelper.GetLoggedInUserInfo(result.Access_Token);
             }
             catch(Exception exception)
             {

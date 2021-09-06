@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using TRMDekstopUI.Helpers;
+using TRMDekstopUI.Library;
+using TRMDekstopUI.Library.Api;
 using TRMDekstopUI.ViewModels;
 
 namespace TRMDekstopUI
@@ -31,6 +33,7 @@ namespace TRMDekstopUI
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<ILoggedInUserModel, LoggedInUserModel>()
                 .Singleton<IAPIHelper, APIHelper>();
 
             GetType().Assembly.GetTypes()

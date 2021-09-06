@@ -53,6 +53,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TRMDekstopUI.Library\TRMDekstopUI.Library.csproj">
+      <Project>{e6a2e639-c8b3-44d9-a4ef-6a54d6ed36bd}</Project>
+      <Name>TRMDekstopUI.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
