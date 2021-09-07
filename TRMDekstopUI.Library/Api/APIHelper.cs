@@ -78,6 +78,7 @@ namespace TRMDekstopUI.Library.Api
                 if (response.IsSuccessStatusCode)
                 {
                     var result = await response.Content.ReadAsAsync<LoggedInUserModel>();
+                    
                     _loggedInUser.Id = result.Id;
                     _loggedInUser.FirstName = result.FirstName;
                     _loggedInUser.LastName = result.LastName;
